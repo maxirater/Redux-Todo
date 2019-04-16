@@ -4,21 +4,21 @@ export const TOGGLE_TODO = 'TOGGLE_TODO'
 
 export const addTodo = (todo) => {
     return{
-        type: 'MOVIE_SELECTED',
+        type: ADD_TODO,
         payload: todo
     }
 }
 
 export const removeTodo = (index) => {
     return{
-        type: 'REMOVE_TODO',
+        type: REMOVE_TODO,
         payload: null
     }
 }
 
 export const toggleTodo = (index) => {
     return{
-        type: 'TOGGLE_TODO',
+        type: TOGGLE_TODO,
         payload: index
     }
 }

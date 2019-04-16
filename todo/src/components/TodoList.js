@@ -8,7 +8,7 @@ class TodoList extends React.Component {
         super()
 
         this.state = {
-            newTodo: ''
+            todo: ''
         }
     }
 
@@ -19,7 +19,7 @@ class TodoList extends React.Component {
     }
 
     addTodo = () => {
-        this.props.addTodo( this.state.newTodo )
+        this.props.addTodo( this.state.todo )
         this.setState( { todo: '' } )
     }
 
@@ -29,7 +29,7 @@ class TodoList extends React.Component {
                 <h2>Todo List</h2>
                 <input
                     type='text'
-                    name='friend'
+                    name='todo'
                     value={this.state.todo}
                     placeholder='enter todo'
                     onChange={this.handleChange} />
@@ -38,7 +38,7 @@ class TodoList extends React.Component {
 
                 {this.props.todos.map( ( todo, index ) => (
                     <div onClick={() => this.props.toggleTodo( index )} key={index}>
-                        <p>{todo.value}</p>
+                        <p style={{textDecoration: todo.completed ? 'line-through' : 'none'}}>{todo.value}</p>
                     </div>
                 ) )}
             </div>
@@ -50,4 +50,4 @@ const mapStateToProps = state => {
     return { todos: state.todoReducer.todos }
 }
 
-export default connect( mapStateToProps, { addTodo } )( TodoList )
+export default connect( mapStateToProps, { addTodo, toggleTodo } )( TodoList )

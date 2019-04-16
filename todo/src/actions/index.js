@@ -9,16 +9,16 @@ export const addTodo = (todo) => {
     }
 }
 
-export const removeTodo = (id) => {
+export const removeTodo = (index) => {
     return{
         type: 'REMOVE_TODO',
         payload: null
     }
 }
 
-export const toggleTodo = (id) => {
+export const toggleTodo = (index) => {
     return{
         type: 'TOGGLE_TODO',
-        payload: false
+        payload: index
     }
 }

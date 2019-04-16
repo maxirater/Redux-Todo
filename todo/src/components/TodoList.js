@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 import { addTodo, toggleTodo, removeTodo } from '../actions'
 
-
 class TodoList extends React.Component {
     constructor() {
         super()
@@ -21,6 +20,7 @@ class TodoList extends React.Component {
 
     addTodo = () => {
         this.props.addTodo( this.state.newTodo )
+        this.setState( { todo: '' } )
     }
 
     render() {
@@ -30,18 +30,17 @@ class TodoList extends React.Component {
                 <input
                     type='text'
                     name='friend'
-                    value={this.state.text}
-                    placeholder='enter'
-                    onChange={this.handleChange}
-                />
+                    value={this.state.todo}
+                    placeholder='enter todo'
+                    onChange={this.handleChange} />
 
                 <button onClick={this.addTodo}>Add Todo</button>
 
-                {this.props.todos.map( ( todo, id ) => (
-                    <div onClick={() => this.props.toggleTodo( id )} key={id}>
+                {this.props.todos.map( ( todo, index ) => (
+                    <div onClick={() => this.props.toggleTodo( index )} key={index}>
                         <p>{todo.value}</p>
                     </div>
-                ))}
+                ) )}
             </div>
         )
     }

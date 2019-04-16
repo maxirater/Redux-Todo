@@ -37,8 +37,11 @@ class TodoList extends React.Component {
                 <button onClick={this.addTodo}>Add Todo</button>
 
                 {this.props.todos.map( ( todo, index ) => (
-                    <div onClick={() => this.props.toggleTodo( index )} key={index}>
-                        <p style={{textDecoration: todo.completed ? 'line-through' : 'none'}}>{todo.value}</p>
+                    <div>
+                        <div onClick={() => this.props.toggleTodo( index )} key={index}>
+                            <p style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.value}</p>
+                        </div>
+                        <button onClick={() => this.props.removeTodo(index)}>Delete</button>
                     </div>
                 ) )}
             </div>
@@ -50,4 +53,4 @@ const mapStateToProps = state => {
     return { todos: state.todoReducer.todos }
 }
 
-export default connect( mapStateToProps, { addTodo, toggleTodo } )( TodoList )
+export default connect( mapStateToProps, { addTodo, toggleTodo, removeTodo } )( TodoList )

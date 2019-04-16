@@ -12,7 +12,7 @@ export const addTodo = (todo) => {
 export const removeTodo = (index) => {
     return{
         type: REMOVE_TODO,
-        payload: null
+        payload: index
     }
 }
 

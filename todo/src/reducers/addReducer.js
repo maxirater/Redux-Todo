@@ -1,4 +1,4 @@
-import {ADD_TODO,TOGGLE_TODO} from '../actions'
+import {ADD_TODO,TOGGLE_TODO,REMOVE_TODO} from '../actions'
 
 const initialState = {
     todos: []
@@ -21,6 +21,14 @@ export default (state = initialState, action) => {
                         return {...todo, completed: !todo.completed}
                     }
                     return todo
+                })
+            }
+        case REMOVE_TODO:
+            return{
+                ...state, todos: state.todos.filter((todo, index) =>{
+                    if(index !== action.payload){
+                        return todo
+                    }
                 })
             }
         default:

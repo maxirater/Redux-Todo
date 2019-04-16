@@ -19,7 +19,9 @@ class TodoList extends React.Component {
     }
 
     addTodo = () => {
-        this.props.addTodo( this.state.todo )
+        if(this.state.todo.length !== 0){
+            this.props.addTodo( this.state.todo )
+        }
         this.setState( { todo: '' } )
     }
 
